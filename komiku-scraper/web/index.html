@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komiku API - Salin GET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="badge">🔥 Komiku Scraper API Toolkit</p>
+        <h1>Salin URL &amp; Test API dengan Mudah</h1>
+        <p class="lead">
+          Tool gratis untuk menyalin endpoint API Komiku dan langsung test hasilnya.
+          Tidak perlu setup kompleks—cukup masukkan base URL, pilih endpoint, dan lihat hasilnya!
+        </p>
+        <p class="subtext">
+          💡 <strong>Tip:</strong> Semua proses berjalan di browser kamu, aman dan cepat.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <span class="dot online"></span>
+        <span>Realtime fetch langsung ke endpoint</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-label">📍 Langkah 1</p>
+            <h2>Masukkan Base URL API</h2>
+          </div>
+          <button id="copyBaseUrl" class="ghost">📋 Salin</button>
+        </div>
+        <p class="helper">
+          Masukkan alamat server API Komiku kamu (contoh: <code>https://komiku.org</code>).
+          <br />Nilai akan tersimpan otomatis di browser.
+        </p>
+        <div class="input-row">
+          <input id="baseUrl" type="url" placeholder="https://komiku.org" />
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-label">🔗 Langkah 2</p>
+            <h2>Pilih Endpoint</h2>
+          </div>
+        </div>
+        <p class="helper">
+          Klik salah satu tombol di bawah untuk menyalin URL lengkap endpoint ke clipboard.
+          Atau gunakan form di bawah untuk custom endpoint.
+        </p>
+        <div id="endpointList" class="endpoint-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-label">⚙️ Langkah 3</p>
+            <h2>Test Endpoint & Lihat Response</h2>
+          </div>
+        </div>
+        <p class="helper">
+          Masukkan path endpoint dan query string (jika ada), lalu klik "Jalankan GET" untuk melihat hasilnya.
+        </p>
+        <form id="requestForm" class="form-grid">
+          <label>
+            <span>📌 Path Endpoint</span>
+            <input id="pathInput" type="text" placeholder="/v1/home" required />
+            <small>Contoh: /v1/search, /v1/manga/solo-leveling/chapters</small>
+          </label>
+          <label>
+            <span>🔍 Query String (opsional)</span>
+            <input id="queryInput" type="text" placeholder="keyword=solo-leveling" />
+            <small>Format: key=value&key2=value2</small>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="primary">
+              ▶️ Jalankan GET
+            </button>
+            <button type="button" id="copyFullUrl" class="ghost">📋 Salin URL</button>
+          </div>
+        </form>
+        <div id="responseWrapper" class="response hidden">
+          <div class="response-head">
+            <h3>📊 Response JSON</h3>
+            <button type="button" id="copyResponse" class="ghost">📋 Salin JSON</button>
+          </div>
+          <pre id="responseBody">Belum ada request. Isi form di atas dan klik "Jalankan GET".</pre>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

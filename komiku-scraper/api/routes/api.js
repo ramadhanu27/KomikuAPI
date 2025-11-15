@@ -68,11 +68,17 @@ api.get('/manga/:slug', async (req, res) => {
 api.get('/manga/:slug/chapters', async (req, res) => {
     try {
         const { slug } = req.params;
+        if (!slug || slug.includes(':')) {
+            return res.status(400).json({
+                status: 'Error',
+                message: 'Invalid slug. Ganti :slug dengan nilai sebenarnya, mis. /manga/solo-leveling/chapters'
+            });
+        }
         const data = await komiku.chapters(slug);
         res.status(200).json({ status: 'Ok', data });
     } catch (error) {
         console.error('Chapters API error:', error);
-        res.status(500).json({ status: 'Error', message: 'Failed to fetch chapters' });
+        res.status(500).json({ status: 'Error', message: 'Failed to fetch chapters', detail: error.message });
     }
 });
 
